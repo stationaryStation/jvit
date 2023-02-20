@@ -1,7 +1,9 @@
 const email_input = document.getElementById("email");
 const password_input = document.getElementById("password");
 const form = document.getElementById("login");
+const token_form = document.getElementById("token_form")
 const loginPage = document.getElementById("loginPage");
+const token_input = document.getElementById("token_input");
 const clientPage = document.getElementById("clientPage");
 const websocket = new WebSocket("wss://ws.revolt.chat?version=1&format=json");
 const server_select = document.getElementById("serverlist");
@@ -12,7 +14,6 @@ const servers = [];
 const channels = [];
 let messages = [];
 let message_content = "";
-
 let current_server = ""
 current_channel = ""
 
@@ -48,6 +49,11 @@ websocket.addEventListener('message', (e) => {
 let session = {};
 
 form.addEventListener('submit', (e) => {
+    e.preventDefault();
+})
+
+
+token.addEventListener('submit', (e) => {
     e.preventDefault();
 })
 
@@ -142,6 +148,17 @@ function login() {
     }));
 }
 
+function loginToken() {
+    if (token_input.value) {
+            session.token = token_input.value;
+            loginPage.className = "hide"
+            clientPage.className = "show"
+            websocket.send(JSON.stringify({
+                type: "Authenticate",
+                token: session.token
+            }))
+    }
+}
 function logout() {
     const xhr = new XMLHttpRequest();
 
