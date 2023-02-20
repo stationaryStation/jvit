@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jvit</title>
+    <link rel="stylesheet" href="index.css" />
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <section id="loginPage" class="show">
+        <form id="login" onsubmit="login()">
+            <header>
+                <h1>JVit</h1>
+            </header>
+            <input id="email" type="email" role="text" placeholder="email" />
+            <input id="password" type="password" role="text" placeholder="password" />
+            <button>Login</button>
+        </form>
+    </section>
+    <section id="clientPage" class="hide">
+        <nav>
+            <select id="serverlist"> 
+                <option>---</option>
+            </select>
+            <select id="channellist">
+                <option>---</option>
+            </select>
+        </nav>
+        <section id="messages">
+        </section>
+        <section>
+            <input id="messagebox" role="textbox" placeholder="Send Message with enter"/>
+            <button onclick="logout()">Logout</button>
+        </section>
+    </section>
+</body>
+</html>
